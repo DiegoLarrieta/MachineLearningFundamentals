@@ -2,6 +2,8 @@
 
 Linear regression is one of the most widely used and fundamental algorithms in supervised machine learning. It’s simple, interpretable, and forms the basis for more complex models.
 
+IT IS NEVER USED AS A CLASIFICATION ALGORITHM 
+
 ---
 
 ## 🔍 What is Linear Regression?
