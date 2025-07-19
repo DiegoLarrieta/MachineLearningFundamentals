@@ -10,28 +10,72 @@ This document explains the **main types of error** and the principle of **Empiri
 
 "Error" refers to how far off a model's predictions are from the actual values. We use **loss functions** (like MSE, log-loss, 0-1 loss) to compute it.
 
+
 # 📉 Examples of Function Losses
 
-| **Nombre**     | **Fórmula**                                                    | **Típico para…**         |
-|----------------|----------------------------------------------------------------|--------------------------|
-| **MSE**        | $\frac{1}{n} \sum (y - \hat{y})^2$                             | Regresión                |
-| **MAE**        | $\frac{1}{n} \sum \left| y - \hat{y} \right|$                  | Regresión                |
-| **Log-loss**   | $-y \log(\hat{y}) - (1 - y) \log(1 - \hat{y})$                 | Clasificación binaria    |
-| **Hinge loss** | $\max(0, 1 - y \cdot \hat{y})$                                 | SVM                      |
+A loss function measures how well a machine learning model is performing. Below are the most common loss functions and where they are typically used.
 
+---
+
+### 🟩 Mean Squared Error (MSE)
+
+**Formula:**
+
+$$
+\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+$$
+
+**Typical use:** Regression problems  
+**Notes:** Sensitive to outliers due to squaring the errors.
+
+---
+
+### 🟦 Mean Absolute Error (MAE)
+
+**Formula:**
 
 $$
 \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} \left| y_i - \hat{y}_i \right|
 $$
+
+**Typical use:** Regression problems  
+**Notes:** More robust to outliers; errors are in same units as target.
+
+---
+
+### 🟨 Log-Loss (Binary Cross-Entropy)
+
+**Formula:**
+
+$$
+\text{LogLoss} = -y \log(\hat{y}) - (1 - y) \log(1 - \hat{y})
+$$
+
+**Typical use:** Binary classification  
+**Notes:** Used when predicting probabilities; strongly penalizes confident wrong predictions.
+
+---
+
+### 🟥 Hinge Loss
+
+**Formula:**
+
+$$
+\text{Hinge} = \max(0, 1 - y \cdot \hat{y})
+$$
+
+**Typical use:** Support Vector Machines (SVM)  
+**Notes:** Encourages a margin between decision boundary and data points.
+
 ---
 
 ## 🔢 Key Types of Error
 
 ### 1. 🧠 **True Error** (Expected Risk / Generalization Error)
 
-\[
-\mathcal{R}(h) = \mathbb{E}_{(x, y) \sim \mathcal{D}} [\ell(h(x), y)]
-\]
+$$
+\mathcal{R}(h) = \mathbb{E}_{(x, y) \sim \mathcal{D}} \left[ \ell(h(x), y) \right]
+$$
 
 - Measures how well hypothesis \( h \) performs on the **entire data distribution** \( \mathcal{D} \).
 - **Theoretical**: we can't compute it directly because we don't know the true distribution.
@@ -41,9 +85,9 @@ $$
 
 ### 2. 📊 **Empirical Error** (Empirical Risk)
 
-\[
+$$
 \hat{\mathcal{R}}(h) = \frac{1}{n} \sum_{i=1}^{n} \ell(h(x_i), y_i)
-\]
+$$
 
 - Average loss over the **training set**.
 - **Practical approximation** of the true error.
@@ -53,6 +97,10 @@ $$
 
 ### 3. 🔁 **Training Error**
 
+$$
+\hat{\mathcal{R}}_{\text{train}}(h) = \frac{1}{n_{\text{train}}} \sum_{i=1}^{n_{\text{train}}} \ell(h(x_i), y_i)
+$$
+
 - The empirical error **measured on the training data**.
 - Usually low if the model is overfitting.
 
@@ -60,12 +108,21 @@ $$
 
 ### 4. 🔬 **Validation Error**
 
+$$
+\hat{\mathcal{R}}_{\text{val}}(h) = \frac{1}{n_{\text{val}}} \sum_{i=1}^{n_{\text{val}}} \ell(h(x_i), y_i)
+$$
+
 - Error measured on a **validation set** (a held-out subset of data).
 - Used for **tuning hyperparameters** and preventing overfitting.
 
 ---
 
 ### 5. 📦 **Test Error**
+
+$$
+\hat{\mathcal{R}}_{\text{test}}(h) = \frac{1}{n_{\text{test}}} \sum_{i=1}^{n_{\text{test}}} \ell(h(x_i), y_i)
+$$
+
 
 - Error measured on **unseen test data**.
 - Provides a **realistic estimate** of how the model will perform in production.
@@ -77,17 +134,18 @@ $$
 
 ERM is the core principle behind most learning algorithms:
 
-> Choose the hypothesis \( h \in \mathcal{H} \) that **minimizes the empirical risk**.
+> Choose the hypothesis $h \in \mathcal{H}$ that **minimizes the empirical risk**.
 
 Formally:
 
-\[
-h^* = \arg\min_{h \in \mathcal{H}} \hat{\mathcal{R}}(h)
-\]
+$$
+h^* = \arg\min_{h \in \mathcal{H}} \frac{1}{n} \sum_{i=1}^{n} \ell(h(x_i), y_i)
+$$
 
 Where:
-- \( \mathcal{H} \): hypothesis space (set of all models you're considering)
-- \( \hat{\mathcal{R}}(h) \): empirical error on training data
+- $\mathcal{H}$ is the hypothesis space
+- $h^*$ is the chosen model that minimizes empirical loss
+- $\ell(h(x_i), y_i)$ is the loss for prediction $h(x_i)$ compared to true value $y_i$
 
 ---
 
