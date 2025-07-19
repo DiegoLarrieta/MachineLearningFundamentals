@@ -98,7 +98,7 @@ $$
 ### 3. 🔁 **Training Error**
 
 $$
-\hat{\mathcal{R}}_{\text{train}}(h) = \frac{1}{n_{\text{train}}} \sum_{i=1}^{n_{\text{train}}} \ell(h(x_i), y_i)
+\hat{\mathcal{R}}_{train}(h) = \frac{1}{n_{train}} \sum_{i=1}^{n_{train}} \ell(h(x_i), y_i)
 $$
 
 - The empirical error **measured on the training data**.
@@ -109,7 +109,7 @@ $$
 ### 4. 🔬 **Validation Error**
 
 $$
-\hat{\mathcal{R}}_{\text{val}}(h) = \frac{1}{n_{\text{val}}} \sum_{i=1}^{n_{\text{val}}} \ell(h(x_i), y_i)
+\hat{\mathcal{R}}_{val}(h) = \frac{1}{n_{val}} \sum_{i=1}^{n_{val}} \ell(h(x_i), y_i)
 $$
 
 - Error measured on a **validation set** (a held-out subset of data).
@@ -120,7 +120,7 @@ $$
 ### 5. 📦 **Test Error**
 
 $$
-\hat{\mathcal{R}}_{\text{test}}(h) = \frac{1}{n_{\text{test}}} \sum_{i=1}^{n_{\text{test}}} \ell(h(x_i), y_i)
+\hat{\mathcal{R}}_{test}(h) = \frac{1}{n_{test}} \sum_{i=1}^{n_{test}} \ell(h(x_i), y_i)
 $$
 
 
@@ -157,13 +157,22 @@ Minimizing empirical error **too perfectly** may lead the model to fit noise in 
 
 ### ✅ Solution: Regularized ERM
 
-\[
-\hat{\mathcal{R}}_{reg}(h) = \hat{\mathcal{R}}(h) + \lambda \cdot \Omega(h)
-\]
+**Definition:**
 
-- \( \Omega(h) \): regularization term (e.g., \( \|\theta\|^2 \))
-- \( \lambda \): regularization strength
-- Encourages **simpler models** with better generalization
+To prevent overfitting, we add a regularization term to the empirical risk. This penalizes complex models and encourages simpler, more generalizable solutions.
+
+**Formula:**
+
+$$
+\hat{\mathcal{R}}_{\text{reg}}(h) = \hat{\mathcal{R}}(h) + \lambda \cdot \Omega(h)
+$$
+
+Where:
+- $\Omega(h)$ is the regularization term (e.g., $\|\theta\|^2$)
+- $\lambda$ is the regularization strength (a hyperparameter)
+
+✅ This helps control model complexity and improves generalization to unseen data.
+
 
 ---
 
