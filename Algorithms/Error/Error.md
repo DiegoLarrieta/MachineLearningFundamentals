@@ -14,7 +14,7 @@ This document explains the **main types of error** and the principle of **Empiri
 | Nombre         | Fórmula                                     | Típico para...        | 
 | -------------- | ------------------------------------------- | --------------------- |
 | **MSE**        | $\frac{1}{n} \sum (y - \hat{y})^2$          | Regresión             |
-| **MAE**        | $(\frac{1}{n} \sum y - \hat{y})            |                       |
+| **MAE**        | $(\frac{1}{n} \sum y - \hat{y})$            |                       |
 | **Log-loss**   | $-y \log(\hat{y}) - (1-y)\log(1 - \hat{y})$ | Clasificación binaria |
 | **Hinge loss** | $\max(0, 1 - y \cdot \hat{y})$              | SVM                   |
 
