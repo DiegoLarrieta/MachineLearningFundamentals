@@ -95,10 +95,14 @@ $$
 
 ---
 
-### 3. 🔁 **Training Error**
+### 3. 🔁 Training Error
+
+The training error is the empirical risk over the training set.
+
+**Formula:**
 
 $$
-\hat{R}_{train}(h) = \frac{1}{n_{train}} \sum_{i=1}^{n_{train}} \ell(h(x_i), y_i)
+\hat{R}_{\mathrm{train}}(h) = \frac{1}{n_{\mathrm{train}}} \sum_{i=1}^{n_{\mathrm{train}}} \ell(h(x_i), y_i)
 $$
 
 - The empirical error **measured on the training data**.
