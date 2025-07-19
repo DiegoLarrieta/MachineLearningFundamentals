@@ -102,8 +102,9 @@ The training error is the empirical risk over the training set.
 **Formula:**
 
 $$
-\hat{R}_{\mathrm{train}}(h) = \frac{1}{n_{\mathrm{train}}} \sum_{i=1}^{n_{\mathrm{train}}} \ell(h(x_i), y_i)
+\hat{R}_{train}(h) = \frac{1}{n_{train}} \sum_{i=1}^{n_{train}} (h(x_i) - y_i)^2
 $$
+
 
 - The empirical error **measured on the training data**.
 - Usually low if the model is overfitting.
