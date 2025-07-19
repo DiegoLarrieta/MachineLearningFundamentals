@@ -105,6 +105,14 @@ $$
 \hat{R}_{train}(h) = \frac{1}{n_{train}} \sum_{i=1}^{n_{train}} (h(x_i) - y_i)^2
 $$
 
+$$
+\hat{R}_{train}(h) = \frac{1}{n_{train}} \sum_{i=1}^{n_{train}} (h(x_i) - y_i)^2
+$$
+
+$$
+\hat{R}_{train}(h) = \frac{1}{n_{train}} \sum_{i=1}^{n_{train}} \ell(h(x_i), y_i)
+$$
+
 
 - The empirical error **measured on the training data**.
 - Usually low if the model is overfitting.
@@ -117,6 +125,11 @@ $$
 \hat{R}_{val}(h) = \frac{1}{n_{val}} \sum_{i=1}^{n_{val}} \ell(h(x_i), y_i)
 $$
 
+$$
+\hat{R}_{val}(h) = \frac{1}{n_{val}} \sum_{i=1}^{n_{val}} \ell(h(x_i), y_i)
+$$
+
+
 - Error measured on a **validation set** (a held-out subset of data).
 - Used for **tuning hyperparameters** and preventing overfitting.
 
@@ -127,7 +140,6 @@ $$
 $$
 \hat{R}_{test}(h) = \frac{1}{n_{test}} \sum_{i=1}^{n_{test}} \ell(h(x_i), y_i)
 $$
-
 
 
 - Error measured on **unseen test data**.
