@@ -10,13 +10,15 @@ This document explains the **main types of error** and the principle of **Empiri
 
 "Error" refers to how far off a model's predictions are from the actual values. We use **loss functions** (like MSE, log-loss, 0-1 loss) to compute it.
 
-# Examples of function losses
-| Nombre         | Fórmula                                     | Típico para...        | 
-| -------------- | ------------------------------------------- | --------------------- |
-| **MSE**        | $\frac{1}{n} \sum (y - \hat{y})^2$          | Regresión             |
-| **MAE**        | $(\frac{1}{n} \sum y - \hat{y})$            |                       |
-| **Log-loss**   | $-y \log(\hat{y}) - (1-y)\log(1 - \hat{y})$ | Clasificación binaria |
-| **Hinge loss** | $\max(0, 1 - y \cdot \hat{y})$              | SVM                   |
+# 📉 Examples of Function Losses
+
+| **Nombre**     | **Fórmula**                                                    | **Típico para…**         |
+|----------------|----------------------------------------------------------------|--------------------------|
+| **MSE**        | $\frac{1}{n} \sum (y - \hat{y})^2$                             | Regresión                |
+| **MAE**        | $\frac{1}{n} \sum \left| y - \hat{y} \right|$                  | Regresión                |
+| **Log-loss**   | $-y \log(\hat{y}) - (1 - y) \log(1 - \hat{y})$                 | Clasificación binaria    |
+| **Hinge loss** | $\max(0, 1 - y \cdot \hat{y})$                                 | SVM                      |
+
 
 $$
 \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} \left| y_i - \hat{y}_i \right|
