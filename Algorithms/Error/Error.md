@@ -98,7 +98,7 @@ $$
 ### 3. 🔁 **Training Error**
 
 $$
-\hat{\mathcal{R}}_{train}(h) = \frac{1}{n_{train}} \sum_{i=1}^{n_{train}} \ell(h(x_i), y_i)
+\hat{R}_{train}(h) = \frac{1}{n_{train}} \sum_{i=1}^{n_{train}} \ell(h(x_i), y_i)
 $$
 
 - The empirical error **measured on the training data**.
@@ -109,7 +109,7 @@ $$
 ### 4. 🔬 **Validation Error**
 
 $$
-\hat{\mathcal{R}}_{val}(h) = \frac{1}{n_{val}} \sum_{i=1}^{n_{val}} \ell(h(x_i), y_i)
+\hat{R}_{val}(h) = \frac{1}{n_{val}} \sum_{i=1}^{n_{val}} \ell(h(x_i), y_i)
 $$
 
 - Error measured on a **validation set** (a held-out subset of data).
@@ -120,8 +120,9 @@ $$
 ### 5. 📦 **Test Error**
 
 $$
-\hat{\mathcal{R}}_{test}(h) = \frac{1}{n_{test}} \sum_{i=1}^{n_{test}} \ell(h(x_i), y_i)
+\hat{R}_{test}(h) = \frac{1}{n_{test}} \sum_{i=1}^{n_{test}} \ell(h(x_i), y_i)
 $$
+
 
 
 - Error measured on **unseen test data**.
