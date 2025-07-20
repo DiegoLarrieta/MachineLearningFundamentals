@@ -14,22 +14,43 @@ Unlike traditional linear regression, which fits **one global line** for all the
 
 ## 🔍 How Does It Work?
 
-1. **Choose a query point** \( x_q \) where you want to make a prediction.
-2. Compute a **weight for each training point** based on its distance from \( x_q \).  
-   Commonly used: Gaussian kernel
+1. **Choose a query point** $x_q$ where you want to make a prediction.
 
-   \[
+2. Compute a **weight for each training point** based on its distance from $x_q$.  
+   A commonly used function is the **Gaussian kernel**:
+
+   $$
    w^{(i)} = \exp\left( - \frac{(x^{(i)} - x_q)^2}{2 \tau^2} \right)
-   \]
+   $$
 
-   - \( \tau \): bandwidth (controls how "local" the model is)
-   - Points closer to \( x_q \) get larger weights.
 
-3. Fit a **weighted linear regression** using those weights.
-4. Predict \( \hat{y}_q \) based on that localized model.
+   - $x^{(i)}$: the **i-th training example**
+   - $x_q$: the **query point** — the input where you want to make a prediction
+   - $\tau$ is the **bandwidth parameter** — it controls how "local" the model is.
+   - Points closer to $x_q$ will have larger weights $w^{(i)}$.
+
+3. Fit a **weighted linear regression** using the computed weights.
+
+4. Predict the output:
+
+   $$
+   \hat{y}_q = \theta^\top x_q
+   $$
+
+   - Where $\theta$ is learned specifically for $x_q$ using the weighted training set.
+
 5. Repeat for every new point you want to predict.
 
 ---
+
+### 🔁 What happens with those weights?
+
+Using these weights, the algorithm performs a **weighted linear regression** centered around each query point:
+
+- It learns a **local line** (a local model) that fits only the neighborhood around $x_q$
+- Then it **predicts** the value $\hat{y}_q$ at that point using the local model
+- This process is **repeated** for every new input you want to predict
+
 
 ## ⚙️ What Is It Used For?
 
