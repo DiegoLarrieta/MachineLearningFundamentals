@@ -19,7 +19,7 @@ Where:
 - `y` is the predicted output
 - `x` is the input feature
 - `β₀` is the y-intercept (bias)
-- `β₁` is the slope (weight)
+- `β₁` is the coefficient (weight)
 - `ε` is the error term (residual)
 
 In **multiple linear regression**, we use several input features:
@@ -43,11 +43,42 @@ It helps us:
 
 ## 📦 What do we get from it?
 
-- A **predictive model** that estimates values of `y` given new values of `x`.
-- **Coefficients** that quantify the impact of each feature.
-- **Performance metrics** like:
-  - Mean Squared Error (MSE)
-  - R² Score (Coefficient of Determination)
+- A **predictive model**, which is basically a straight line (or plane) that we can use to estimate `y` based on any new `x`. It tells us: “if `x` increases, how does `y` change?”
+
+- **Coefficients**, which are the **slopes** of the line. They tell us **how strongly each input (feature)** affects the output. A high positive value means the feature pushes `y` up; a negative value means it pulls `y` down.
+
+- A **bias term** (also called intercept), which shifts the line **up or down** so that it fits the data better. It’s the prediction when all inputs are zero.
+
+- **Performance metrics**, which help us evaluate how well the model works:
+  - **Mean Squared Error (MSE)** – how far off the predictions are on average.
+  - **R² Score (Coefficient of Determination)** – how much of the variability in `y` is explained by the model.
+
+## ✅ What do we get exactly?
+
+
+At the end of training a linear regression model, we obtain a **mathematical formula** that was learned from the data.
+
+### For a single feature (simple linear regression):
+
+$$
+\hat{y} = \beta_0 + \beta_1 x
+$$
+
+### For multiple features (multivariate regression):
+
+$$
+\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_n x_n
+$$
+
+Where:
+
+- $\hat{y}$ is the predicted output
+- $x_i$ are the input features
+- $\beta_i$ are the learned **coefficients** (slopes or weights)
+- $\beta_0$ is the **bias** (intercept)
+
+📌 This formula allows us to **predict new values of `y`** given new inputs `x`.
+
 
 ---
 

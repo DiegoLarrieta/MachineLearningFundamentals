@@ -52,7 +52,8 @@ denominator = np.sum((X_train - x_mean) ** 2)
 beta_1 = numerator / denominator
 beta_0 = y_mean - beta_1 * x_mean
 
-print(f"Intercept (β₀): {beta_0:.2f}")
+print(f"Formula: ŷ = {beta_0:.2f} + {beta_1:.2f}x")
+print(f"Intercept (β₀) Bias : {beta_0:.2f}")
 print(f"Coefficient (β₁): {beta_1:.2f}")
 
 # 6. Predict on test set
